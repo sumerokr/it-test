@@ -56,17 +56,27 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-
-app.get('/login', function (req, res) {
-	console.log(req.flash);
-	res.render('login', { message: req.flash('error') });
+app.get('/', isLoggedIn, function (req, res) {
+	res.render('index')
 });
 
-app.post('/login', passport.authenticate('local', {
+app.get('/signin', function (req, res) {
+	res.render('signin', { message: req.flash('error') });
+});
+
+app.post('/signin', passport.authenticate('local', {
 	successRedirect: '/',
-	failureRedirect: '/login',
+	failureRedirect: '/signin',
 	failureFlash: true
 }));
+
+// функция для проверки аутентификации
+function isLoggedIn(req, res, next) {
+	// если пользователь авторизован, идем дальше
+	if (req.isAuthenticated()) return next();
+	// если нет, то редиректим на страницу логина
+	res.redirect('/signin');
+}
 
 app.listen('3000', function() {
 	console.log('Express server listening on port :3000');
