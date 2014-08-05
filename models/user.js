@@ -1,12 +1,20 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-var userSchema = mongoose.Schema({
-    username: String,
-    password: String
+var userSchema = Schema({
+    firstName: {
+    	type: String,
+    	unique: true,
+    	required: 'Обязательное поле'
+    },
+    password: {
+    	type: String,
+    	required: 'Обязательное поле'
+    }
 });
 
 userSchema.methods.verifyPassword = function (password) {
-    return true;
+    return this.password === password;
 };
 
 module.exports = mongoose.model('User', userSchema);
