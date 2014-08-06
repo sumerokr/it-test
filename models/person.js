@@ -12,7 +12,7 @@ var personSchema = Schema({
 });
 
 personSchema.virtual('fullName').get(function () {
-  return this.firstName + ' ' + this.middleName + ' ' + this.lastName;
+	return this.firstName + ' ' + this.middleName + ' ' + this.lastName;
 });
 
 module.exports = mongoose.model('Person', personSchema);

@@ -3,11 +3,13 @@ extends layout
 block content
     form(action="/signup", method="post")
         label Имя
-        input(type="text", name="firstName")
+        input(type="text", name="username", required, autofocus)
         br
         label Пароль
-        input(type="password", name="password")
+        input(type="password", name="password", required)
         br
-        input(type="submit", value="Submit")
+        input(type="submit", value="Зарегистрироваться")
         if message.length
             div #{message}
+    p Есть аккаунт? 
+        a(href='/signin') Входите

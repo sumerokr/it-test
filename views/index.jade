@@ -1,29 +1,26 @@
 extends layout
 
 block content
-  h1 #{title}
-  p Welcome to #{title}
-
-  table(border="1", cellspacing="0", cellpadding="5")
-    thead
-      tr
-        td №
-        td FIO
-        td Doctype
-        td Serial number
-        td Release date
-    tbody
-        each person in persons
+    table(border="1", cellspacing="0", cellpadding="5")
+        thead
             tr
-                td(rowspan="#{person.documents.length}") #{person.id}
-                td(rowspan="#{person.documents.length}") #{person.fullName}
-                    each doc, index in person.documents
-                        if index === 0
-                            td #{doc.doctype.name}
-                            td #{doc.serial} #{doc.number}
-                            td #{doc.releaseDate}
-                        else
-                            tr
+                td №
+                td FIO
+                td Doctype
+                td Serial number
+                td Release date
+        tbody
+            each person in persons
+                tr
+                    td(rowspan="#{person.documents.length}") #{person.id}
+                    td(rowspan="#{person.documents.length}") #{person.fullName}
+                        each doc, index in person.documents
+                            if index === 0
                                 td #{doc.doctype.name}
                                 td #{doc.serial} #{doc.number}
                                 td #{doc.releaseDate}
+                            else
+                                tr
+                                    td #{doc.doctype.name}
+                                    td #{doc.serial} #{doc.number}
+                                    td #{doc.releaseDate}

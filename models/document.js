@@ -5,8 +5,8 @@ var documentSchema = Schema({
     serial: String,
     number: String,
     releaseDate: {
-    	type: Date,
-    	get: formatDate
+        type: Date,
+        get: formatDate
     },
     doctype: {
         type: Schema.Types.ObjectId,

@@ -2,14 +2,13 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var userSchema = Schema({
-    firstName: {
-    	type: String,
-    	unique: true,
-    	required: 'Обязательное поле'
+    username: {
+        type: String,
+        required: 'Обязательное поле'
     },
     password: {
-    	type: String,
-    	required: 'Обязательное поле'
+        type: String,
+        required: 'Обязательное поле'
     }
 });
 

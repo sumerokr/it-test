@@ -4,14 +4,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var mongoose = require('mongoose');
-var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
 var passport = require('./config/passport');
 
 // var User = require('./models/user.js');
-// var Person = require('./models/person.js');
-// var Document = require('./models/document.js');
-// var Doctype = require('./models/doctype.js');
+var Person = require('./models/person.js');
+var Document = require('./models/document.js');
+var Doctype = require('./models/doctype.js');
 
 var routes = require('./routes/index');
 
@@ -132,5 +131,5 @@ app.use('/', routes);
 
 
 app.listen('3000', function () {
-	console.log('Express server listening on port :3000');
+    console.log('Express server listening on port :3000');
 });
