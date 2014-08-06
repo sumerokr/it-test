@@ -17,6 +17,7 @@ router.get('/', isLoggedIn, function (req, res) {
     });
 });
 
+// обработчики логина
 router.get('/signin', function (req, res) {
     res.render('signin', { title: 'Вход', message: req.flash('error') });
 });
@@ -26,6 +27,7 @@ router.post('/signin', passport.authenticate('local-signin', {
     failureFlash: true
 }));
 
+// обработчики регистрации
 router.get('/signup', function (req, res) {
     res.render('signup', { title: 'Регистрация', message: req.flash('error') });
 });

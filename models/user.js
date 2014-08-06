@@ -12,6 +12,8 @@ var userSchema = Schema({
     }
 });
 
+// по уму здесь надо было бы еще добавить метод
+// для генерации hash-а, но время было на исходе
 userSchema.methods.verifyPassword = function (password) {
     return this.password === password;
 };
